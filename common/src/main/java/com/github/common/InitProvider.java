@@ -1,6 +1,7 @@
 package com.github.common;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,13 +10,26 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-public class AppContextProvider extends ContentProvider {
+import com.orhanobut.logger.Logger;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Timer;
+
+import timber.log.Timber;
+
+/**
+ * 通过声明 {@link ContentProvider} 自动完成初始化
+ */
+public class InitProvider extends ContentProvider {
     @SuppressLint("StaticFieldLeak")
     static Context mContext;
 
     @Override
     public boolean onCreate() {
         mContext = getContext();
+        CommonConfig.getInstance()
+                .init((Application) getContext().getApplicationContext());
         return false;
     }
 

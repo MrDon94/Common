@@ -25,7 +25,7 @@ public class ContextProvider {
         if (instance == null) {
             synchronized (ContextProvider.class) {
                 if (instance == null) {
-                    Context context = AppContextProvider.mContext;
+                    Context context = InitProvider.mContext;
                     if (context == null) {
                         //跨进程时通过反射获取上下文
                         try {
