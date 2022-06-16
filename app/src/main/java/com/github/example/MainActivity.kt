@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
                 Timber.e(e)
             }
-
 //            val s2 = 6/0
         }
     }

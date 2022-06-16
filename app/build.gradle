@@ -30,8 +30,6 @@ android {
     }
 }
 
-def android_support_version = "27.1.1"
 dependencies {
-    implementation "com.android.support:appcompat-v7:${android_support_version}"
     implementation project(path: ':common')
 }
