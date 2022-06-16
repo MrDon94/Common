@@ -9,10 +9,7 @@ import android.view.Window;
 import java.lang.reflect.Method;
 
 /**
- * @ProjectName: EissWellSiteSystem
- * @Description: 适配导航栏遮挡问题
- * @Author: cd
- * @CreateDate: 2022/1/27 15:47
+ * 适配导航栏遮挡问题
  */
 public class NavigationBarUtil {
     private NavigationBarUtil() {

@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: cd
- * @Description: 选择列表文字的对话框
- * @date: 2020/11/25
+ * 选择列表文字的对话框
  */
 public class SelectItemDialog<T extends BaseSelectTextInfo> {
 
