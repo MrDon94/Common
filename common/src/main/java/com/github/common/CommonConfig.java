@@ -1,6 +1,7 @@
 package com.github.common;
 
 import android.app.Application;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
@@ -51,6 +52,18 @@ public class CommonConfig {
         Logger.addLogAdapter(new AndroidLogAdapter());
         if (BuildConfig.DEBUG){
             Timber.plant(new Timber.DebugTree(){
+                private static final int MAX_TAG_LENGTH = 23;
+                @Nullable
+                @Override
+                protected String createStackElementTag(@NotNull StackTraceElement element) {
+                    String tag = "(" + element.getFileName() + ":" + element.getLineNumber() + ")";
+                    // 日志 TAG 长度限制已经在 Android 8.0 被移除
+                    if (tag.length() <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        return tag;
+                    }
+                    return tag.substring(0, MAX_TAG_LENGTH);
+                }
+
                 @Override
                 protected void log(int priority, @Nullable String tag, @NotNull String message, @Nullable Throwable t) {
                     Logger.log(priority, tag, message, t);
