@@ -80,7 +80,7 @@ public class CommonConfig {
 
             HandlerThread ht = new HandlerThread("AndroidFileLogger." + folder);
             ht.start();
-            final int MAX_BYTES = 500 * 1024; // 500K averages to a 4000 lines per file
+            int MAX_BYTES = 500 * 1024; // 500K averages to a 4000 lines per file
             Handler handler = new DiskLogStrategy.WriteHandler(ht.getLooper(), folder, MAX_BYTES);
             DiskLogStrategy logStrategy = new DiskLogStrategy(handler);
             FormatStrategy formatStrategy = CsvFormatStrategy.newBuilder()

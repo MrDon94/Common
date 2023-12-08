@@ -10,13 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.btn_test).setOnClickListener {
-            /*Timber.d("ddd")
+            Timber.d("ddd")
             Timber.i("iii")
-            Timber.v("vvv")
             Timber.e("eee")
-            Timber.w("www")*/
+            Timber.e(Exception("测试"))
+            val s = 5/0
+            Timber.v("vvv")
+            Timber.w("www")
             try {
-                val s = 5/0
             } catch (e: Exception) {
                 e.printStackTrace()
                 Timber.e(e)
